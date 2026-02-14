@@ -26,18 +26,17 @@ noBtn.addEventListener("touchstart", moveNoButton);
 function moveNoButton(e) {
     if (e.type === "touchstart") e.preventDefault();
 
-    const container = document.querySelector(".letter-window");
+    const container = document.querySelector(".buttons");
 
-    const containerRect = container.getBoundingClientRect();
-    const btnRect = noBtn.getBoundingClientRect();
+    const maxX = container.clientWidth - noBtn.offsetWidth;
+    const maxY = container.clientHeight - noBtn.offsetHeight;
 
-    const maxX = containerRect.width - btnRect.width - 40;
-    const maxY = containerRect.height - btnRect.height - 40;
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-    const randomX = Math.random() * maxX - (containerRect.width / 2 - btnRect.width / 2);
-    const randomY = Math.random() * maxY - (containerRect.height / 2 - btnRect.height / 2);
-
-    noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    noBtn.style.position = "absolute";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 }
 
 // YES is clicked
