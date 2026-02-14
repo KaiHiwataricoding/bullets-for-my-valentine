@@ -26,15 +26,15 @@ noBtn.addEventListener("touchstart", moveNoButton);
 function moveNoButton(e) {
     if (e.type === "touchstart") e.preventDefault();
 
-    const container = document.querySelector(".buttons");
+    const container = document.querySelector(".letter-window");
 
-    const maxX = container.clientWidth - noBtn.offsetWidth;
-    const maxY = container.clientHeight - noBtn.offsetHeight;
+    const maxX = container.clientWidth - noBtn.offsetWidth - 60;
+    const maxY = container.clientHeight - noBtn.offsetHeight - 120; 
+    // reduce vertical range more
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    const randomX = Math.random() * maxX + 30;
+    const randomY = Math.random() * maxY + 60;
 
-    noBtn.style.position = "absolute";
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
 }
