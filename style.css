@@ -126,7 +126,7 @@ display: inline-block;
 
 .no-btn {
     z-index: 1;
-    position: relative;   /* change back to relative */
+    position: absolute;   /* change back to relative */
     transition: transform 0.2s ease;
     cursor: default;
 }
