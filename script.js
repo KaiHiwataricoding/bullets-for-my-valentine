@@ -10,18 +10,16 @@ const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
 // Click Envelope
-
 envelope.addEventListener("click", () => {
     envelope.style.display = "none";
     letter.style.display = "flex";
 
-    setTimeout( () => {
+    setTimeout(() => {
         document.querySelector(".letter-window").classList.add("open");
-    },50);
+    }, 50);
 });
 
 // Logic to move the NO btn
-
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 
@@ -33,47 +31,20 @@ function moveNoButton(e) {
     const containerRect = container.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
 
-    const maxX = containerRect.width - btnRect.width - 20;
-    const maxY = containerRect.height - btnRect.height - 20;
+    const maxX = containerRect.width - btnRect.width - 40;
+    const maxY = containerRect.height - btnRect.height - 40;
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    const randomX = Math.random() * maxX - (containerRect.width / 2 - btnRect.width / 2);
+    const randomY = Math.random() * maxY - (containerRect.height / 2 - btnRect.height / 2);
 
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
+    noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
 }
 
-// Logic to make YES btn to grow
-
-// let yesScale = 1;
-
-// yesBtn.style.position = "relative"
-// yesBtn.style.transformOrigin = "center center";
-// yesBtn.style.transition = "transform 0.3s ease";
-
-// noBtn.addEventListener("click", () => {
-//     yesScale += 2;
-
-//     if (yesBtn.style.position !== "fixed") {
-//         yesBtn.style.position = "fixed";
-//         yesBtn.style.top = "50%";
-//         yesBtn.style.left = "50%";
-//         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
-//     }else{
-//         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
-//     }
-// });
-
 // YES is clicked
-
 yesBtn.addEventListener("click", () => {
     title.textContent = "Yippeeee!";
-
     catImg.src = "cat_dance.gif";
-
     document.querySelector(".letter-window").classList.add("final");
-
     buttons.style.display = "none";
-
     finalText.style.display = "block";
 });
